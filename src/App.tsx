@@ -1,12 +1,14 @@
 import { useState } from "react";
 import logo from "./assets/astronaut-miner.png";
 const API_URL = "https://sanjaykumaran.com";
+import { useNavigate } from "react-router-dom";
+
 export default function App() {
   const [searchType, setSearchType] = useState("OR");
   const [resultsLength, setResultsLength] = useState(15);
   const [queryString, setQueryString] = useState("");
   const [results, setResults] = useState([]);
-
+  const navigate = useNavigate();
   const sendSearchRequest = async () => {
     console.log("Sending search request for: " + queryString);
     const response = await fetch(API_URL + "/search", {
@@ -100,7 +102,12 @@ export default function App() {
             </li>
           </ul>
         </div>
-        <button className="btn">Add site</button>
+        <button
+          className="btn"
+          onClick={() => navigate("/add-site")}
+        >
+          Add site
+        </button>
       </div>
       {/*Results*/}
       <div className="px-10">
