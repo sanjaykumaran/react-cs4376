@@ -20,7 +20,7 @@ export default function AddSiteView() {
       },
       body: JSON.stringify({
         url: url,
-        payment: true,
+        payment: payment,
       }),
     });
     const data = await response.json();
